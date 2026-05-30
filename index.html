@@ -31,21 +31,7 @@
       overflow-x: hidden;
     }
 
-    /* Scanline overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.04) 2px,
-        rgba(0,0,0,0.04) 4px
-      );
-      pointer-events: none;
-      z-index: 999;
-    }
+
 
     /* ── HERO ── */
     .hero {
