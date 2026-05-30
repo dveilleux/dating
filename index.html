@@ -317,19 +317,58 @@
     .px.g { background: #3ddc84; }
     .px.b { background: #5ba0f2; }
     .px.y { background: var(--gold); }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+      display: flex;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 0.4rem 1rem;
+      font-family: 'Boogaloo', cursive;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    [data-lang] { display: none; }
+    .lang-fr [data-lang="fr"] { display: block; }
+    .lang-fr span[data-lang="fr"] { display: inline; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-en span[data-lang="en"] { display: inline; }
   </style>
 </head>
-<body>
+<body class="lang-fr">
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
 
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-tag">🎮 Player 2 Wanted</div>
-  <h1>Salut, moi<br>c'est <span>David</span>.</h1>
+  <div data-lang="fr"><h1>Salut, moi<br>c'est <span>David</span>.</h1></div>
+  <div data-lang="en"><h1>Hey, I'm<br><span>David</span>.</h1></div>
   <p class="hero-sub">
-    Nerd sympathique, 26 ans.<br>
-    Je cherche ma <em>Player 2</em> — pour la vraie vie, pas juste une partie.
+    <span data-lang="fr">Nerd sympathique, 26 ans.<br>Je cherche ma <em>Player 2</em> — pour la vraie vie, pas juste une partie.</span>
+    <span data-lang="en">Friendly nerd, 26.<br>Looking for my <em>Player 2</em> — for real life, not just one playthrough.</span>
   </p>
-  <a href="#apply" class="cta-btn">▶ Postuler maintenant</a>
+  <a href="#apply" class="cta-btn"><span data-lang="fr">▶ Postuler maintenant</span><span data-lang="en">▶ Apply now</span></a>
   <div class="scroll-hint">Scroll</div>
 </div>
 
@@ -355,8 +394,8 @@
 
 <!-- ── ABOUT ── -->
 <section>
-  <div class="section-label">// À propos</div>
-  <h2>Qui suis-je ?</h2>
+  <div class="section-label">// <span data-lang="fr">À propos</span><span data-lang="en">About</span></div>
+  <h2><span data-lang="fr">Qui suis-je ?</span><span data-lang="en">Who am I?</span></h2>
 
   <div class="stats">
     <div class="stat-card"><span class="val">26</span><span class="lbl">Ans</span></div>
@@ -366,7 +405,8 @@
   </div>
 
   <div class="bio-block">
-    Nerd sympathique cherche player 2. J'aime les jeux vidéo, D&D, les petites attentions pis passer du vrai temps avec le monde que j'aime. Bonus si t'aimes les chats ou les gars un peu trop attachés à leur chat. Peux finir un cube Rubik en 1m30, mais peux pas choisir ce qu'il veut manger.
+    <span data-lang="fr">Nerd sympathique cherche player 2. J'aime les jeux vidéo, D&D, les petites attentions pis passer du vrai temps avec le monde que j'aime. Bonus si t'aimes les chats ou les gars un peu trop attachés à leur chat. Peux finir un cube Rubik en 1m30, mais peux pas choisir ce qu'il veut manger.</span>
+    <span data-lang="en">Friendly nerd looking for Player 2. I'm into video games, D&D, small thoughtful gestures, and spending real quality time with the people I care about. Bonus points if you like cats — or guys who are maybe a little too attached to their cat. Can solve a Rubik's cube in 1:30, but can't decide what he wants to eat.</span>
   </div>
 
   <div class="pixel-row">
@@ -374,15 +414,15 @@
     <div class="px r"></div><div class="px g"></div><div class="px b"></div><div class="px y"></div>
   </div>
 
-  <p style="color: var(--muted); margin-bottom: 1rem;">Ce que tu vas retrouver dans mon inventaire :</p>
+  <p style="color: var(--muted); margin-bottom: 1rem;"><span data-lang="fr">Ce que tu vas retrouver dans mon inventaire :</span><span data-lang="en">What's in my inventory:</span></p>
   <div class="chips">
-    <div class="chip"><span class="ico">🎮</span> Jeux vidéo</div>
+    <div class="chip"><span class="ico">🎮</span> <span data-lang="fr">Jeux vidéo</span><span data-lang="en">Video games</span></div>
     <div class="chip"><span class="ico">🐉</span> D&D</div>
     <div class="chip"><span class="ico">🃏</span> Magic: the Gathering</div>
     <div class="chip"><span class="ico">💻</span> IT / Tech</div>
-    <div class="chip"><span class="ico">🐱</span> Citrouille (le chat boss)</div>
+    <div class="chip"><span class="ico">🐱</span> <span data-lang="fr">Citrouille (le chat boss)</span><span data-lang="en">Citrouille (the cat boss)</span></div>
     <div class="chip"><span class="ico">💬</span> Deep talks</div>
-    <div class="chip"><span class="ico">🎁</span> Petites attentions</div>
+    <div class="chip"><span class="ico">🎁</span> <span data-lang="fr">Petites attentions</span><span data-lang="en">Thoughtful gestures</span></div>
     <div class="chip"><span class="ico">🧩</span> Rubik's cube</div>
   </div>
 </section>
@@ -391,10 +431,11 @@
 
 <!-- ── APPLY ── -->
 <section id="apply">
-  <div class="section-label">// Candidature</div>
-  <h2>T'es prête à jouer ?</h2>
+  <div class="section-label">// <span data-lang="fr">Candidature</span><span data-lang="en">Application</span></div>
+  <h2><span data-lang="fr">T'es prête à jouer ?</span><span data-lang="en">Ready to play?</span></h2>
   <p style="color: var(--muted); margin-bottom: 2rem;">
-    Remplis la fiche ci-dessous. Pas de CV requis — juste toi, pour vrai.
+    <span data-lang="fr">Remplis la fiche ci-dessous. Pas de CV requis — juste toi, pour vrai.</span>
+    <span data-lang="en">Fill out the form below. No resume needed — just be you.</span>
   </p>
 
   <div class="form-section">
@@ -409,8 +450,8 @@
           <input id="f-age" name="Âge" type="number" placeholder="ex: 24" min="18" max="99" required />
         </div>
         <div class="field full">
-          <label for="f-contact">Ton Instagram</label>
-          <input id="f-contact" name="Instagram" type="text" placeholder="@ton_handle" required />
+          <label for="f-contact">Comment te rejoindre ? (Instagram, téléphone…)</label>
+          <input id="f-contact" name="Contact" type="text" placeholder="@ton_handle ou 514-XXX-XXXX" required />
         </div>
         <div class="field full">
           <label for="f-game">C'est quoi ton jeu préféré en ce moment ? (ou une passion quelconque)</label>
@@ -439,23 +480,76 @@
           <input id="f-photo" name="Photo" type="url" placeholder="https://instagram.com/p/..." />
         </div>
       </div>
-      <button type="submit" class="submit-btn">▶ Envoyer ma candidature</button>
+      <button type="submit" class="submit-btn"><span data-lang="fr">▶ Envoyer ma candidature</span><span data-lang="en">▶ Send my application</span></button>
     </form>
 
     <div id="success-msg">
       <div class="big">🎮</div>
-      <h3 style="font-family:'Boogaloo',cursive; font-size:1.8rem; color:#fff; margin-top:0.5rem;">Candidature reçue !</h3>
-      <p>Je reviens vers toi bientôt. En attendant, soigne ton perso. ✨</p>
+      <h3 style="font-family:'Boogaloo',cursive; font-size:1.8rem; color:#fff; margin-top:0.5rem;"><span data-lang="fr">Candidature reçue !</span><span data-lang="en">Application received!</span></h3>
+      <p><span data-lang="fr">Je reviens vers toi bientôt. En attendant, soigne ton perso. ✨</span><span data-lang="en">I'll get back to you soon. In the meantime, keep levelling up. ✨</span></p>
     </div>
   </div>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-  Made with <span>♥</span> &amp; un peu trop de caféine · Citrouille approved 🐱
+  <span data-lang="fr">Fait avec <span>♥</span> &amp; un peu trop de caféine · Citrouille approuvé 🐱</span><span data-lang="en">Made with <span>♥</span> &amp; a bit too much caffeine · Citrouille approved 🐱</span>
 </footer>
 
 <script>
+
+  const translations = {
+    fr: {
+      "f-name": ["Ton prénom", "ex: Jade"],
+      "f-age": ["Ton âge", "ex: 24"],
+      "f-contact": ["Comment te rejoindre ? (Instagram, téléphone…)", "@ton_handle ou 514-XXX-XXXX"],
+      "f-game": ["C'est quoi ton jeu préféré en ce moment ? (ou une passion quelconque)", "ex: Baldur's Gate 3, le tricot, les films d'horreur…"],
+      "f-cats": ["Comment tu te situes avec les chats ?", ""],
+      "f-deep": ["Un sujet dont tu pourrais parler pendant des heures ?", "ex: La conscience, les multivers, pourquoi les chats poussent les choses en bas des tables…"],
+      "f-why": ["Pourquoi toi ?", "Vends-toi. Ou pas. Sois juste vraie."],
+      "f-photo": ["Un lien vers une de tes photos (Instagram, Google Photos…)", "https://instagram.com/p/..."]
+    },
+    en: {
+      "f-name": ["Your first name", "e.g. Jade"],
+      "f-age": ["Your age", "e.g. 24"],
+      "f-contact": ["How to reach you? (Instagram, phone…)", "@your_handle or 555-XXX-XXXX"],
+      "f-game": ["Favourite game or hobby right now?", "e.g. Baldur's Gate 3, knitting, horror movies…"],
+      "f-cats": ["How do you feel about cats?", ""],
+      "f-deep": ["A topic you could talk about for hours?", "e.g. consciousness, multiverses, why cats knock things off tables…"],
+      "f-why": ["Why you?", "Sell yourself. Or don't. Just be real."],
+      "f-photo": ["A link to one of your photos (Instagram, Google Photos…)", "https://instagram.com/p/..."]
+    }
+  };
+
+  const catOptions = {
+    fr: ["— Choisis une option —", "J'adore les chats 🐱", "Je les tolère avec amour", "Neutre, mais ça peut changer", "Allergique (avertissement honnête)"],
+    en: ["— Pick an option —", "I love cats 🐱", "I tolerate them with love", "Neutral, but open to it", "Allergic (honest warning)"]
+  }
+
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+
+    const t = translations[lang];
+    for (const [id, [labelText, placeholder]] of Object.entries(t)) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const label = document.querySelector('label[for="' + id + '"]');
+      if (label) label.textContent = labelText;
+      if (placeholder) el.placeholder = placeholder;
+    }
+
+    // Update select options
+    const select = document.getElementById('f-cats');
+    if (select) {
+      const opts = catOptions[lang];
+      [...select.options].forEach((o, i) => { if (opts[i]) o.text = opts[i]; });
+    }
+  }
+
+  // Init
+  setLang('fr');
+
   const form = document.getElementById('the-form');
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
