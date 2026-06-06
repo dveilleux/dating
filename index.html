@@ -561,16 +561,14 @@
         headers: { 'Accept': 'application/json' }
       });
       const json = await res.json();
-      console.log('Formspree response:', res.status, json);
       if (res.ok) {
         form.style.display = 'none';
         document.getElementById('success-msg').style.display = 'block';
       } else {
-        alert('Erreur: ' + JSON.stringify(json));
+        alert('Oops, une erreur est survenue. Réessaie! 😅');
       }
     } catch(err) {
-      console.error('Submit error:', err);
-      alert('Erreur réseau: ' + err.message);
+      alert('Oops, une erreur est survenue. Réessaie! 😅');
     }
   });
 </script>
